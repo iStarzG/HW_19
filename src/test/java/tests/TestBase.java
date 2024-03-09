@@ -17,7 +17,7 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void beforeAll() {
-        System.setProperty("driver", System.getProperty("driver", "local"));
+        System.setProperty("driver", System.getProperty("driver", "remote"));
         DriverConfig driverConfig = ConfigFactory.create(DriverConfig.class);
         Configuration.baseUrl = driverConfig.browserBaseUrl();
         Configuration.pageLoadStrategy = driverConfig.pageLoadStrategy();
