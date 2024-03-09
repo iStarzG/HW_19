@@ -17,7 +17,7 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void beforeAll() {
-        System.setProperty("driver", System.getProperty("driver", "remote"));
+//        System.setProperty("driver", System.getProperty("driver", "remote"));
         DriverConfig driverConfig = ConfigFactory.create(DriverConfig.class);
         Configuration.baseUrl = driverConfig.browserBaseUrl();
         Configuration.pageLoadStrategy = driverConfig.pageLoadStrategy();
@@ -47,7 +47,7 @@ public class TestBase {
     void addAttachments() {
         DriverConfig driverConfig = ConfigFactory.create(DriverConfig.class);
         if (driverConfig.isRemote()) {
-            Attach.screenshotAs();
+            Attach.screenshotAs("Last Screenshot");
             Attach.pageSource();
             Attach.browserConsoleLogs();
             Attach.addVideo();
