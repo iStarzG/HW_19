@@ -17,13 +17,14 @@ import java.util.Map;
 public class TestBase {
     @BeforeAll
     static void beforeAll() {
+        System.setProperty("driver", System.getProperty("driver", "local"));
         DriverConfig driverConfig = ConfigFactory.create(DriverConfig.class);
         Configuration.baseUrl = driverConfig.browserBaseUrl();
         Configuration.pageLoadStrategy = driverConfig.pageLoadStrategy();
         Configuration.browser = driverConfig.browserName();
         Configuration.browserVersion = driverConfig.browserVersion();
         Configuration.browserSize = driverConfig.browserSize();
-        // Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = true;
         if (driverConfig.isRemote()) {
             Configuration.remote = driverConfig.browserRemoteUrl();
 
@@ -33,6 +34,7 @@ public class TestBase {
                     "enableVideo", true
             ));
             Configuration.browserCapabilities = capabilities;
+            Configuration.holdBrowserOpen = false;
         }
     }
 

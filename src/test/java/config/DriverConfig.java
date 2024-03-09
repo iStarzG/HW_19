@@ -5,12 +5,13 @@ import org.aeonbits.owner.Config;
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
         "system:properties",
-        "classpath:config/${is.remote}.properties"
+        "classpath:config/${driver}.properties"
 })
 public interface DriverConfig extends Config {
 
     @Key("is.remote")
     Boolean isRemote();
+
     @DefaultValue("chrome")
     @Key("browser.name")
     String browserName();
